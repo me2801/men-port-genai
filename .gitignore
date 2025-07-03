@@ -2,3 +2,6 @@
 /.venv
 /.idea
 /genai-agentos
+# Ignore all .env files everywhere
+**/.env*
+**/.venv
