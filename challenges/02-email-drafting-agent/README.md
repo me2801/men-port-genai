@@ -1,109 +1,148 @@
 # Email Drafting Agent
 
-This project is my submission for GenAI Hackathon Mini Challenge #2. It implements an Email Drafting Agent that transforms bullet-point input into polished, professional emails.
+## Problem Statement
 
-## Overview
+This project implements an Email Drafting Agent as part of the GenAI Hackathon Pre-Hackathon Mini Challenge #2.
 
-The agent takes minimal input in bullet-point format, such as:
-- Recipient's name and/or role
+The goal is to build an agent that transforms bullet-point-style input into a clear, professional email draft. The agent produces polished emails with a natural tone and respectful style.
+
+### The agent accepts:
+- Recipient’s name and/or role
 - Purpose of the email
-- Key points or details to include
+- Key details or points to include (bullet points)
 
-It then returns a complete email containing:
+### And returns a well-structured email containing:
 - A subject line
-- A respectful greeting
-- A clear, concise body
+- A natural and respectful greeting
+- A concise body covering all key information
 - A professional closing
 
-## Features
+The agent is designed to run on the GenAI AgentOS platform.
 
-- Modular email construction logic
-- Structured prompt templates
-- Natural tone with fallback handling for missing data
-- Easy deployment and integration with GenAI AgentOS
+## Quickstart Guide
 
-## Project Structure
+### 1. Clone the repository
 
-```
-02-email-drafting-agent/
-├── main.py                # Entry point for local testing or agent execution
-├── email_generator.py     # Core email generation logic
-├── prompt_templates.py    # Templates for subject, greeting, and closing
-├── agentos_config.yaml    # Required file to register the agent with AgentOS
-├── requirements.txt       # Python dependencies
-├── README.md              # This file
-└── examples/
-    ├── input_example.json
-    └── output_example.txt
+```bash
+git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
+cd YOUR_REPO_NAME
 ```
 
-## Setup
+### 2. Configure environment variables
 
-Ensure you are using Python 3.8+.
+Create a `.env` file in the root of your project containing the following:
 
-1. Create and activate a virtual environment (optional but recommended):
-
-```
-python -m venv .venv
-source .venv/bin/activate  # Windows: .venv\Scripts\activate
+```bash
+OPENAPI_KEY=<your OpenAI API key>
+AGENT_JWT=<your GenAI AgentOS JWT token>
 ```
 
-2. Install dependencies:
+- Get your OpenAI API key: https://platform.openai.com/account/api-keys
+- Get your GenAI JWT token: see the GenAI AgentOS documentation.
 
-```
-pip install -r requirements.txt
-```
+### 3. Set up and activate the virtual environment using uv
 
-3. Run the script for testing:
+If you don’t have `uv`, install it first:
 
-```
-python main.py
-```
-
-## AgentOS Registration
-
-This agent includes an `agentos_config.yaml` file with the necessary metadata to register and run it using GenAI AgentOS. For details, see:
-
-https://github.com/genai-works-org/genai-agentos
-
-## Example Input
-
-```json
-{
-  "recipient": "Hiring Manager",
-  "purpose": "Job application follow-up",
-  "points": [
-    "Submitted my resume last week",
-    "Excited about the role",
-    "Happy to provide more information"
-  ]
-}
+```bash
+pip install uv
 ```
 
-## Example Output
+Then create and activate the virtual environment:
 
+```bash
+uv venv
+.venv/Scripts/activate  # On Windows
+# or
+source .venv/bin/activate  # On Mac/Linux
 ```
-Subject: Following Up on My Application
+
+Sync the dependencies from `pyproject.toml`:
+
+```bash
+uv sync
+```
+
+### 4. Run the agent
+
+Start the agent with:
+
+```bash
+uv run main.py
+```
+
+The agent will register with GenAI AgentOS and start processing incoming events.
+
+## Functionality
+
+The core functionality of this agent is to generate professional email drafts from minimal user input. 
+
+### Inputs
+- `recipient`: The recipient's name or role.
+- `purpose`: The overall purpose of the email.
+- `points`: A list of bullet points with the key information to include.
+
+### Output
+A professional email containing:
+- A subject line
+- A greeting addressing the recipient
+- A concise, clear body covering the provided points
+- A respectful closing
+
+### Example
+
+**Input:**
+- Recipient: Hiring Manager
+- Purpose: Application for Data Scientist position
+- Points:
+    - Completed Master’s in Data Science
+    - 3 years of experience in machine learning
+    - Passionate about innovative technologies
+
+**Example Output:**
+
+Subject: Application for Data Scientist Role
 
 Dear Hiring Manager,
 
-I hope this message finds you well. I wanted to follow up regarding the job application I submitted last week. I'm very excited about the opportunity and would be happy to provide any additional information you may need.
+I hope this message finds you well.
 
-Thank you for your time and consideration.
+I am writing to apply for the Data Scientist position. I hold a Master’s degree in Data Science and bring over three years of hands-on experience in machine learning. I am deeply passionate about leveraging innovative technologies to drive impactful solutions.
+
+Thank you for considering my application. I look forward to the possibility of contributing to your team.
 
 Best regards,  
-Your Name
+[Your Name]
+
+## Technical Stack
+
+- Python 3.11+
+- GenAI AgentOS
+- OpenAI GPT-4o-mini
+- python-dotenv for environment variable management
+
+## Folder Structure
+
+```
+.
+├── main.py              # Agent logic and registration
+├── .env                 # API keys and JWT token (excluded from git)
+├── README.md            # This file
+├── pyproject.toml       # Project dependencies
+└── requirements.lock    # Locked dependency versions (generated by uv)
 ```
 
-## Notes
+## Status
 
-- This agent is designed to handle partial or missing input gracefully.
-- Templates can be customized easily in `prompt_templates.py`.
+- Functional and tested on GenAI AgentOS
+- Generates professional emails from bullet-point input
+- Ready for submission to Mini Challenge #2
 
-## Optional Deployment
+## Optional: Bonus Deployment
 
-For live testing via ngrok or other services, you can wrap `main.py` in a Flask or FastAPI server. This is optional and can be used to earn bonus points.
+As a bonus, you can deploy this agent live using ngrok or a similar tunneling tool. This allows you to test your agent externally. (Deployment is optional and not included in this repository.)
 
-## License
+## Submission Link
 
-This project is open source and free to use for educational purposes.
+Submit your GitHub repository here:  
+https://forms.gle/usDzCJrD6fjuYLeM7
