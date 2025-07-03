@@ -24,8 +24,10 @@ The agent is designed to run on the GenAI AgentOS platform.
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
-cd YOUR_REPO_NAME
+git clone https://github.com/me2801/men-port-genai.git
+cd challenges
+cd men-port-genai
+cd 02-email-drafting-agent
 ```
 
 ### 2. Configure environment variables
