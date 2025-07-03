@@ -11,12 +11,13 @@ load_dotenv()
 OPENAPI_KEY = os.environ.get("OPENAPI_KEY")
 AGENT_JWT = os.environ.get("AGENT_JWT")
 
+
 openai_client = OpenAI(
-    api_key=AGENT_JWT
+    api_key=OPENAPI_KEY
 )
 
 session = GenAISession(
-    jwt_token=""
+    jwt_token=AGENT_JWT 
 )
 
 
