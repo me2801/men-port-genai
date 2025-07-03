@@ -1,7 +1,29 @@
-/agentos-core
-/.venv
-/.idea
 /genai-agentos
-# Ignore all .env files everywhere
-**/.env*
-**/.venv
+
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments (root and subdirs)
+.venv/
+**/.venv/
+
+# dotenv files
+.env
+.env.*
+**/.env
+**/.env.*
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Build artifacts
+dist/
+build/
+*.egg-info/

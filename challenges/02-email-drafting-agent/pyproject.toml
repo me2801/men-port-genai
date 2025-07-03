@@ -10,6 +10,10 @@ dependencies = [
     "pydantic>=2.11.3",
     "pydantic-settings>=2.8.1",
     "typer>=0.15.2",
+    "openapi>=2.0.0",
+    "genai-protocol>=1.0.9",
+    "python-dotenv>=1.1.0",
+    "requests>=2.32.3",
 ]
 
 [dependency-groups]

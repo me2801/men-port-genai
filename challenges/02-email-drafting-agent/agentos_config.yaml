@@ -1,6 +1,0 @@
-name: email-drafting-agent
-description: Generate professional emails from bullet-point input
-entry_point: main:draft_email
-input_type: object
-output_type: object
-
