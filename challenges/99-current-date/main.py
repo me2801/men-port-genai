@@ -3,9 +3,14 @@ from typing import Annotated
 from genai_session.session import GenAISession
 from genai_session.utils.context import GenAIContext
 from datetime import datetime 
+from dotenv import load_dotenv
 
-AGENT_JWT = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlYjM2NWIyMS1mODVkLTRhZWYtYThhZS04ZmE2MTMwYWI5MDgiLCJleHAiOjI1MzQwMjMwMDc5OSwidXNlcl9pZCI6ImE0MjlmNmQyLTdkZmYtNDQyNi05ZWU4LWU5OGZmNzkyNzFiNiJ9.Gkb7dHpDcNti8OnShRzXn4oqd4pIXQq6_1MACI6ODcY" # noqa: E501
 session = GenAISession(jwt_token=AGENT_JWT)
+AGENT_JWT = os.environ.get("AGENT_JWT")
+
+session = GenAISession(
+    jwt_token=AGENT_JWT
+)
 
 
 @session.bind(

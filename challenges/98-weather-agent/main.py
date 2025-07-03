@@ -10,9 +10,10 @@ load_dotenv()
 
 BASE_URL = "http://api.weatherapi.com/v1/forecast.json"
 REQUEST_KEY = os.environ.get("REQUEST_KEY")
+AGENT_JWT = os.environ.get("AGENT_JWT")
 
 session = GenAISession(
-    jwt_token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiNmUzNzkwNi1jM2YyLTQ3ODctOTQ3Mi0yZDhhMjk4N2UwM2QiLCJleHAiOjI1MzQwMjMwMDc5OSwidXNlcl9pZCI6ImE0MjlmNmQyLTdkZmYtNDQyNi05ZWU4LWU5OGZmNzkyNzFiNiJ9.Vb3dYtTrUh1PxmB3Ff5kedYF2d3n5KEsTMKF8Trjsls"
+    jwt_token=AGENT_JWT
 )
 
 
