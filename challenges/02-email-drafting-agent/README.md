@@ -37,10 +37,12 @@ Create a `.env` file in the root of your project containing the following:
 ```bash
 OPENAPI_KEY=<your OpenAI API key>
 AGENT_JWT=<your GenAI AgentOS JWT token>
+ROUTER_WS_URL=<optional WebSocket URL, leave blank to use local router>
 ```
 
 - Get your OpenAI API key: https://platform.openai.com/account/api-keys
 - Get your GenAI JWT token: see the GenAI AgentOS documentation.
+- Leave `ROUTER_WS_URL` empty unless exposing your agent through ngrok.
 
 ### 3. Set up and activate the virtual environment using uv
 

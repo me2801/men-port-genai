@@ -33,17 +33,25 @@ load_dotenv()
 # Retrieve API keys and tokens from environment variables
 OPENAPI_KEY = os.environ.get("OPENAPI_KEY")
 AGENT_JWT = os.environ.get("AGENT_JWT")
+ROUTER_WS_URL = os.environ.get("ROUTER_WS_URL")
 
 # Initialize OpenAI client
 openai_client = OpenAI(
     api_key=OPENAPI_KEY
 )
 
-# Initialize GenAI session with JWT authentication
-session = GenAISession(
-    jwt_token=AGENT_JWT 
-)
-
+# Initialize GenAI session, using router_ws_url if provided
+if ROUTER_WS_URL:
+    print(f"[INFO] Connecting to router at: {ROUTER_WS_URL}")
+    session = GenAISession(
+        jwt_token=AGENT_JWT,
+        router_ws_url=ROUTER_WS_URL
+    )
+else:
+    print("[INFO] Connecting to default router (localhost)")
+    session = GenAISession(
+        jwt_token=AGENT_JWT
+    )
 
 @session.bind(
     name="email_drafter",
